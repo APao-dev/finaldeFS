@@ -6,15 +6,24 @@ const {conexion_db} = require("../config/bdConfig");
 // app.use(express.static(path.parse(__dirname).dir + '/front'));
 
 // Obtenemos viajes
+// const obtenerViaje = (req, res) => {
+//   // Envio de Front end - con esto logramos enviarle al usuario todo el front.
+//   conexion_db.query("SELECT * FROM t_viaje", (err, results) => {
+//     if (err) throw err;
+//     // console.log(results);
+//     res.send(results);
+//   });
+// };
 const obtenerViaje = (req, res) => {
-  // Envio de Front end - con esto logramos enviarle al usuario todo el front.
-  conexion_db.query("SELECT * FROM t_viaje", (err, results) => {
-    if (err) throw err;
-    // console.log(results);
-    res.send(results);
+ 
+  const sql = "SELECT t_viaje.destino_viaje AS Destino, t_viaje.fecha_viaje AS fecha, t_viaje.presupuesto_viaje AS Presupuesto, t_viaje.comentario_viaje AS comentario, t_usuario.nombre_usuario AS Nombre, t_usuario.email_usuario AS email  FROM t_viaje INNER JOIN t_usuario ON t_viaje.id_cat_usuario=t_usuario.id_usuario";
+  conexion_db.query(sql, function (err, results){
+      if(err) throw err;
+      console.log(results)
+      res.send(results);
   });
+  
 };
-
 
 // Agregar viaje
 const agregarViaje = (req, res) => {

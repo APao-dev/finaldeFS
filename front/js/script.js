@@ -32,9 +32,13 @@ function mostrarViajes() {
           <li class="list-group-item" id="fecha">                
             ${element.fecha_viaje}
           </li>
-          <li class="list-group-item" id="ubicacion">                
-            <!-- ACA VA TEXTO -->
-          </li>
+          <li class="list-group-item" id="nombre">               
+          ${element.nombre_usuario}
+        </li>
+        <li class="list-group-item" id="email">                
+          ${element.email_usuario}
+        </li>
+          
         </ul>
 
         <div class="card-body">
